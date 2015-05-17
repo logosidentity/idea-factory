@@ -56,7 +56,7 @@ function idea_factory_get_votes( $postid = 0 ) {
 
 /**
 *
-*	Grab an optoin from our settings
+*	Grab an option from our settings
 *
 *	@param $option string name of the option
 *	@param $section string name of the section
@@ -167,7 +167,7 @@ function idea_factory_is_archive(){
 /**
 *
 *	Determines if the voting controls should be shown or not based on if the
-*	user has voted, is logged in, and status is approved
+*	user has voted, is logged in, and status is done
 *
 *	@since 1.1
 *	@param $postid int id of the actual idea
@@ -178,7 +178,7 @@ function idea_factory_is_voting_active( $postid = '' ) {
 	$has_voted 		= get_user_meta( get_current_user_ID(), '_idea'.absint( $postid ).'_has_voted', true);
 	$status      	= idea_factory_get_status( $postid );
 
-	if ( !$has_voted && is_user_logged_in() && 'approved' !== $status ){
+	if ( !$has_voted && is_user_logged_in() && 'done' !== $status ){
 
 		return true;
 
@@ -288,7 +288,7 @@ endif;
 
 
 /**
-*	Draw teh actual voting controls
+*	Draw the actual voting controls
 *	@since 1.1
 *
 */
@@ -300,9 +300,16 @@ if ( !function_exists('idea_factory_vote_controls') ):
 			$postid = get_the_ID();
 
 		?>
-			<a class="idea-factory vote-up" data-user-id="<?php echo get_current_user_ID();?>" data-post-id="<?php echo (int) $postid;?>" href="#"></a>
-			<a class="idea-factory vote-down" data-user-id="<?php echo get_current_user_ID();?>" data-post-id="<?php echo (int) $postid;?>" href="#"></a>
-		<?php
+			<a class="idea-factory vote-up" data-user-id="<?php echo get_current_user_ID();?>" data-post-id="<?php echo (int) $postid;?>" href="#"></a> 
+			
+            <?php
+			$positive 	= idea_factory_get_option('if_positive_only','if_settings_main');
+			if($positive !== 'on'){
+				?>
+				<a class="idea-factory vote-down" data-user-id="<?php echo get_current_user_ID();?>" data-post-id="<?php echo (int) $postid;?>" href="#"></a>
+				<?php	;
+			}
+
 	}
 
 endif;
@@ -328,10 +335,3 @@ if ( !function_exists('idea_factory_vote_status') ):
 	}
 
 endif;
-
-
-
-
-
-
-
