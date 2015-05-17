@@ -167,7 +167,7 @@ function idea_factory_is_archive(){
 /**
 *
 *	Determines if the voting controls should be shown or not based on if the
-*	user has voted, is logged in, and status is done
+*	user has voted, is logged in, and status is approved
 *
 *	@since 1.1
 *	@param $postid int id of the actual idea
@@ -178,7 +178,7 @@ function idea_factory_is_voting_active( $postid = '' ) {
 	$has_voted 		= get_user_meta( get_current_user_ID(), '_idea'.absint( $postid ).'_has_voted', true);
 	$status      	= idea_factory_get_status( $postid );
 
-	if ( !$has_voted && is_user_logged_in() && 'done' !== $status ){
+	if ( !$has_voted && is_user_logged_in() && 'approved' !== $status ){
 
 		return true;
 
