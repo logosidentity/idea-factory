@@ -167,7 +167,7 @@ function idea_factory_is_archive(){
 /**
 *
 *	Determines if the voting controls should be shown or not based on if the
-*	user has voted, is logged in, and status is approved
+*	user has voted, is logged in, and status is done
 *
 *	@since 1.1
 *	@param $postid int id of the actual idea
@@ -315,7 +315,7 @@ if ( !function_exists('idea_factory_vote_controls') ):
 endif;
 
 /**
-*	Draw teh voting status
+*	Draw the voting status
 *	@since 1.1
 *
 */
@@ -327,11 +327,18 @@ if ( !function_exists('idea_factory_vote_status') ):
 		$threshold 		= idea_factory_get_option('if_threshold','if_settings_main');
 
 
-		if ( 'open' !== $status && false !== $status && !empty( $threshold ) ) { ?>
+		if ( 'open' !== $status && false !== $status /*&& !empty( $threshold )*/ ) { ?>
 			<div class="idea-factory--status">
-				<?php echo '<span class="idea-factory--status_'.sanitize_html_class( $status ).'">'.esc_attr( $status ).'</span>';?>
+				<?php echo  '<span class="idea-factory--status_'.sanitize_html_class( $status ).'">'.esc_attr( $status ).'</span>';?>
 			</div>
 		<?php }
 	}
 
 endif;
+
+
+
+
+
+
+

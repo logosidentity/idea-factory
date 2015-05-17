@@ -3,7 +3,7 @@ Contributors: nphaskins
 Author URI:  http://nickhaskins.com
 Plugin URI: http://nickhaskins.com/idea-factory
 Donate link: http://nickhaskins.com/idea-factory
-Tags: vote, voting, idea, feedback, user submission, front end submission, front end voting
+Tags: vote, voting, idea, feedback, user submission, front end submission, front end voting, adopt-me
 Requires at least: 3.8
 Tested up to: 4.1
 Stable tag: trunk
@@ -70,6 +70,7 @@ Yep. Copy the file from idea-factory/templates/template-ideas into your theme an
 * NEW - Added a status column within the edit posts screen to show the status of each idea
 * NEW - Added a shortcode [idea_factory] to show the ideas and voting form with options to hide the form, votes, or voting
 * NEW - Added an option to disable the automatic archive
+* TWEAK - Permalinks are now automatically flushed only on plugin activation
 * TWEAK - Instead of posts being put into draft when the option is selected, they are put into "pending" allowing proper review
 
 = 1.0 =

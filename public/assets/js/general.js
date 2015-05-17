@@ -30,7 +30,7 @@ jQuery(document).ready(function($){
 
     });
 
-	$( '.idea-factory' ).live('click', function(e) {
+	$(document).on('click', '.idea-factory', function(e) {
 		e.preventDefault();
 
 		var $this = $(this);

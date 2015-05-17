@@ -18,18 +18,20 @@ class ideaFactoryMeta {
 	/**
 	*
 	*
-	*	Add a status metabox if teh user has opted in for the threshold settings
+	*	Add a status metabox if the user has opted in for the threshold settings
 	*
 	*	@since 1.1
 	*/
 	function add_status_box(){
 
-		// get threashold
-		$threshold = idea_factory_get_option('if_threshold','if_settings_main');
+		// get threshold
+		// This is removed to allow the box always to appear in the ideas.
+		
+	/*	$threshold = idea_factory_get_option('if_threshold','if_settings_main');
 
-		if ( $threshold ) {
+		if ( $threshold ) {*/
 			add_meta_box('idea_factory_status',__( 'Idea Status', 'idea-factory' ),array($this,'render_status_box'), 'ideas','side','core');
-		}
+		/*}*/
 
 	}
 
@@ -48,7 +50,9 @@ class ideaFactoryMeta {
 
 		?>
 		<select name="idea_status">
-	      	<option value="approved" <?php selected( $status, 'approved' ); ?>><?php _e('Approved','idea-factory');?></option>
+	      	<option value="planned" <?php selected( $status, 'planned' ); ?>><?php _e('Planned','idea-factory');?></option>
+	      	<option value="done" <?php selected( $status, 'done' ); ?>><?php _e('Done','idea-factory');?></option>
+            <option value="approved" <?php selected( $status, 'approved' ); ?>><?php _e('Approved','idea-factory');?></option>
 	      	<option value="declined" <?php selected( $status, 'declined' ); ?>><?php _e('Declined','idea-factory');?></option>
 	      	<option value="open" <?php selected( $status, 'open' ); ?>><?php _e('Open','idea-factory');?></option>
 	    </select>
